@@ -78,14 +78,25 @@ if st.toggle("Affichage graphique des risques",False, key=f'Display_Graph_1') ==
                      y = Y,
                      width = 800,
                      height = 800,
-                     #Nom = Manager.Data_Structure["Name"],
-                     #Type = Manager.Data_Structure["Type"],
-                     color = Manager.Data_Structure["Type"],
-                     color_discrete_map = Structure.TypesMenaces_Couleur,
                      labels = {'x': Structure.Axes["X"], 'y': Structure.Axes["Y"]},
                      size=[10 for y in range(len(X))],  # Set a constant size for all points
-                     )
+                     color = Manager.Data_Structure["Type"],
+                     color_discrete_map = Structure.TypesMenaces_Couleur,
+             
+                    custom_data=[Manager.Data_Structure["Name"], 
+                                  Manager.Data_Structure["Type"], 
+                                  Manager.Data_Structure["Occurrence"], 
+                                  ]
+                    )
     
+
+    fig.update_traces(hovertemplate=
+                    "<b>Nom:</b> %{customdata[0]}<br>" +
+                    "<b>Occurrence:</b> %{customdata[1]}<br>" +
+                    "<b>Impact réel:</b> %{customdata[2]}<br>" +
+                    "<extra></extra>"
+                    )  # Customize hover template to show name, occurrence, and real impact
+
     fig.update_layout(title={'text': "Graphique des Risques", 'x':0.5})
     fig.update_xaxes(range=[0.5, 4+0.5], showticklabels=True, dtick = 1)
     fig.update_yaxes(range=[0.5, 4+0.5], showticklabels=True, dtick = 1)
