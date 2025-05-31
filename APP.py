@@ -91,9 +91,9 @@ if st.toggle("Affichage graphique des risques",False, key=f'Display_Graph_1') ==
     
 
     fig.update_traces(hovertemplate=
-                    "<b>Nom:</b> %{customdata[0]}<br>" +
-                    "<b>Occurrence:</b> %{customdata[1]}<br>" +
-                    "<b>Impact réel:</b> %{customdata[2]}<br>" +
+                    "<b>Nom :</b> %{customdata[0]}<br>" +
+                    "<b>Type :</b> %{customdata[1]}<br>" +
+                    "<b>Impact réel :</b> %{customdata[2]}<br>" +
                     "<extra></extra>"
                     )  # Customize hover template to show name, occurrence, and real impact
 
